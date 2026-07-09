@@ -28,15 +28,23 @@ Intel-only and won't run natively on Apple Silicon — as an independent, from-s
 • 20 presets + randomiser
 • Loads in Logic Pro, Ableton Live, and other AU/VST3 hosts
 
-Install: build from source (Xcode + CMake), or grab the prebuilt bundles below and drop them
-into ~/Library/Audio/Plug-Ins/VST3 and ~/Library/Audio/Plug-Ins/Components.
+INSTALL (no building):
+1. Download ElephantCrush-macOS.zip below.
+2. Unzip and drag ElephantCrush.component into ~/Library/Audio/Plug-Ins/Components
+   and ElephantCrush.vst3 into ~/Library/Audio/Plug-Ins/VST3.
+3. Restart your DAW.
+
+If macOS says it's "damaged"/can't be opened (it's just unsigned, not notarized), run in Terminal:
+   xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/Components/ElephantCrush.component
+   xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST3/ElephantCrush.vst3
 
 Independent project — not affiliated with, endorsed by, or connected to Apple or Camel Audio.
 No original code, graphics, names, or presets are included.
 ```
 
-Attach to the release: zip your `Dist/ElephantCrush.vst3` and `Dist/ElephantCrush.component`
-(only if you choose to ship prebuilt binaries — shipping source-only is also fine).
+**Attach to the release:** the file `ElephantCrush-macOS.zip` (already generated in the project
+folder — it contains both the `.component` and `.vst3`). Drag it onto the release's "Attach
+binaries" area on GitHub.
 
 ---
 

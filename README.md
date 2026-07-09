@@ -39,17 +39,32 @@ in code and everything here is original.
   <sub>Running natively (arm64) in Logic Pro.</sub>
 </p>
 
-## Install
+## Install — no building required
 
-Requires Xcode and CMake (`brew install cmake`). Then:
+1. Download **`ElephantCrush-macOS.zip`** from the [**Releases**](../../releases) page.
+2. Unzip it. You'll get `ElephantCrush.component` (AU) and `ElephantCrush.vst3` (VST3).
+3. Drag them into your plug-in folders:
+   - **AU** (Logic Pro, GarageBand) → `~/Library/Audio/Plug-Ins/Components/`
+   - **VST3** (Ableton, Reaper, Cubase, …) → `~/Library/Audio/Plug-Ins/VST3/`
+
+   *In Finder: **Go → Go to Folder…** and paste the path (`~/Library` is hidden by default).*
+4. Restart your DAW and look for **ElephantCrush**.
+
+### If macOS says the plug-in is "damaged" or can't be opened
+This only means the build isn't Apple-notarized (it's a free, unsigned plug-in) — it's safe.
+Open **Terminal**, paste this, and press Return:
 
 ```bash
-./Build\ ElephantCrush.command
+xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/Components/ElephantCrush.component
+xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST3/ElephantCrush.vst3
 ```
 
-It builds a universal AU + VST3, installs them into your user plug-in folders, and drops
-copies in `Dist/`. To install on another Mac, copy the bundles from `Dist/` into that Mac's
-`~/Library/Audio/Plug-Ins/VST3/` and `~/Library/Audio/Plug-Ins/Components/`.
+Then restart your DAW.
+
+## Build from source (optional — developers only)
+
+Requires Xcode and CMake (`brew install cmake`), then run `./Build\ ElephantCrush.command`.
+It builds a universal (arm64 + x86_64) AU + VST3 and installs them locally.
 
 ## Controls
 
